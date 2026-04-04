@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react"
 import { getHealthColor } from "@/lib/health-color"
+import { useLanguage } from "@/lib/i18n"
+import { ComponentHotspot, type ComponentData } from "./component-hotspot"
+import { Cog, Disc, Zap, Thermometer, Gauge, Wind, Droplets } from "lucide-react"
 
 interface ComponentHealth {
   wheels: number
@@ -10,13 +13,27 @@ interface ComponentHealth {
   electrical: number
   hydraulics: number
   cooling: number
+  compressor: number
 }
 
-interface LocomotiveVisualProps {
+interface TelemetryData {
+  engineTemp: number
+  brakesPressure: number
+  voltage: number
+  fuelLevel: number
+  wheelPressure: number
+  compressorPressure: number
+  coolingTemp: number
+}
+
+interface InteractiveLocomotiveProps {
   componentHealth?: ComponentHealth
+  telemetryData?: TelemetryData
+  onComponentSelect?: (id: string) => void
+  selectedComponent?: string | null
 }
 
-export function LocomotiveVisual({ 
+export function InteractiveLocomotive({ 
   componentHealth = {
     wheels: 92,
     engine: 65,
@@ -24,8 +41,21 @@ export function LocomotiveVisual({
     electrical: 95,
     hydraulics: 85,
     cooling: 72,
-  }
-}: LocomotiveVisualProps) {
+    compressor: 88,
+  },
+  telemetryData = {
+    engineTemp: 87,
+    brakesPressure: 6.2,
+    voltage: 3200,
+    fuelLevel: 78,
+    wheelPressure: 8.4,
+    compressorPressure: 7.8,
+    coolingTemp: 42,
+  },
+  onComponentSelect,
+  selectedComponent,
+}: InteractiveLocomotiveProps) {
+  const { t } = useLanguage()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -39,6 +69,74 @@ export function LocomotiveVisual({
     electrical: getHealthColor(componentHealth.electrical),
     hydraulics: getHealthColor(componentHealth.hydraulics),
     cooling: getHealthColor(componentHealth.cooling),
+    compressor: getHealthColor(componentHealth.compressor),
+  }
+
+  // Component data for hotspots with translations
+  const componentDataMap: Record<string, ComponentData> = {
+    engine: {
+      id: "engine",
+      name: t.mainDieselEngine,
+      value: telemetryData.engineTemp.toString(),
+      unit: "°C",
+      health: componentHealth.engine,
+      description: t.engineDescription,
+      icon: <Cog className="w-4 h-4" />,
+    },
+    brakes: {
+      id: "brakes",
+      name: t.brakeSystem,
+      value: telemetryData.brakesPressure.toFixed(1),
+      unit: t.bar,
+      health: componentHealth.brakes,
+      description: t.brakeDescription,
+      icon: <Disc className="w-4 h-4" />,
+    },
+    electrical: {
+      id: "electrical",
+      name: t.electricalSystem,
+      value: (telemetryData.voltage / 1000).toFixed(1),
+      unit: t.kv,
+      health: componentHealth.electrical,
+      description: t.electricalDescription,
+      icon: <Zap className="w-4 h-4" />,
+    },
+    wheels: {
+      id: "wheels",
+      name: t.wheelsBogies,
+      value: telemetryData.wheelPressure.toFixed(1),
+      unit: t.bar,
+      health: componentHealth.wheels,
+      description: t.wheelsDescription,
+      icon: <Gauge className="w-4 h-4" />,
+    },
+    hydraulics: {
+      id: "hydraulics",
+      name: t.fuelEnergy,
+      value: telemetryData.fuelLevel.toString(),
+      unit: "%",
+      health: componentHealth.hydraulics,
+      description: t.fuelDescription,
+      icon: <Droplets className="w-4 h-4" />,
+    },
+    cooling: {
+      id: "cooling",
+      name: t.coolingSystem,
+      value: telemetryData.coolingTemp.toString(),
+      unit: "°C",
+      health: componentHealth.cooling,
+      description: t.coolingDescription,
+      icon: <Thermometer className="w-4 h-4" />,
+    },
+    compressor: {
+      id: "compressor",
+      name: t.compressor,
+      value: telemetryData.compressorPressure.toFixed(1),
+      unit: t.bar,
+      health: componentHealth.compressor,
+      description: t.compressorDescription,
+      icon: <Wind className="w-4 h-4" />,
+    },
   }
 
   return (
@@ -342,6 +440,17 @@ export function LocomotiveVisual({
           <circle cx="772" cy="235" r="4.5" fill={colors.brakes} fillOpacity="0.68"/>
         </g>
 
+        {/* ══════════════ COMPRESSOR ══════════════ */}
+        <g filter="url(#compGlow)">
+          <rect
+            x="120" y="255" width="50" height="30" rx="4"
+            fill={colors.compressor} fillOpacity="0.3"
+            stroke={colors.compressor} strokeWidth="1.5" strokeOpacity="0.6"
+          />
+          <circle cx="135" cy="270" r="8" fill={colors.compressor} fillOpacity="0.5"/>
+          <circle cx="155" cy="270" r="8" fill={colors.compressor} fillOpacity="0.5"/>
+        </g>
+
 
         {/* ══════════════ ROOF DETAILS ══════════════ */}
         {/* Dynamic brake grilles */}
@@ -416,6 +525,57 @@ export function LocomotiveVisual({
         ))}
 
       </svg>
+
+      {/* Interactive Hotspots */}
+      <ComponentHotspot
+        data={componentDataMap.engine}
+        position={{ x: "52%", y: "45%" }}
+        size="lg"
+        onSelect={onComponentSelect}
+        isSelected={selectedComponent === "engine"}
+      />
+      <ComponentHotspot
+        data={componentDataMap.brakes}
+        position={{ x: "87%", y: "55%" }}
+        size="md"
+        onSelect={onComponentSelect}
+        isSelected={selectedComponent === "brakes"}
+      />
+      <ComponentHotspot
+        data={componentDataMap.electrical}
+        position={{ x: "32%", y: "48%" }}
+        size="md"
+        onSelect={onComponentSelect}
+        isSelected={selectedComponent === "electrical"}
+      />
+      <ComponentHotspot
+        data={componentDataMap.wheels}
+        position={{ x: "45%", y: "82%" }}
+        size="md"
+        onSelect={onComponentSelect}
+        isSelected={selectedComponent === "wheels"}
+      />
+      <ComponentHotspot
+        data={componentDataMap.hydraulics}
+        position={{ x: "50%", y: "75%" }}
+        size="md"
+        onSelect={onComponentSelect}
+        isSelected={selectedComponent === "hydraulics"}
+      />
+      <ComponentHotspot
+        data={componentDataMap.cooling}
+        position={{ x: "78%", y: "48%" }}
+        size="md"
+        onSelect={onComponentSelect}
+        isSelected={selectedComponent === "cooling"}
+      />
+      <ComponentHotspot
+        data={componentDataMap.compressor}
+        position={{ x: "17%", y: "68%" }}
+        size="sm"
+        onSelect={onComponentSelect}
+        isSelected={selectedComponent === "compressor"}
+      />
 
       <div className="absolute -bottom-6 left-0 right-0 h-8 bg-gradient-to-b from-foreground/5 to-transparent"/>
     </div>
