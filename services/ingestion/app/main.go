@@ -4,6 +4,7 @@ import(
 	"log"
 	"net/http"
 	"os"
+	"strings"
 	
 	"github.com/xyn3x/hacknu-ktzh/services/ingestion/internal/pipeline"
 	"github.com/xyn3x/hacknu-ktzh/services/ingestion/internal/ws"
