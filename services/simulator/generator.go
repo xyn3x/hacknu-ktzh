@@ -17,6 +17,7 @@ type Telemetry struct {
 }
 
 type State struct {
+<<<<<<< HEAD
 	mu sync.Mutex
 
 	speed    float64
@@ -35,6 +36,13 @@ type State struct {
 	targetTemp  float64
 	targetPress float64
 	targetVolt  float64
+=======
+	mu            sync.Mutex
+	Current       Telemetry
+	IsOverheating bool
+	IsLeakingFuel bool
+	IsLeakingAir  bool
+>>>>>>> 99abf4e21b6b96acda32af47eaa1148d49b5bff1
 }
 
 func NewState() *State {
@@ -50,6 +58,7 @@ func NewState() *State {
 
 var SharedLoco = NewState()
 
+<<<<<<< HEAD
 func (s *State) Fix() {
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -241,3 +250,91 @@ func (s *State) Next() Telemetry {
 
 	return t
 }
+=======
+func (s *State) Next() Telemetry {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	s.Current.Timestamp = time.Now().UnixMilli()
+	s.Current.Error = false
+
+	s.Current.Speed += (rand.Float64() - 0.5) * 5.0
+	if s.Current.Speed < 0 {
+		s.Current.Speed = 0
+	}
+	if s.Current.Speed > 120 {
+		s.Current.Speed = 120
+	}
+
+	if s.IsLeakingFuel {
+		s.Current.Fuel -= 20.0 + (rand.Float64() * 10.0)
+		s.Current.Error = true
+	} else {
+		s.Current.Fuel -= 0.1 + (s.Current.Speed * 0.01)
+	}
+	if s.Current.Fuel < 0 {
+		s.Current.Fuel = 0
+	}
+
+	if s.IsOverheating {
+		s.Current.Temp += 1.0 + rand.Float64()
+		if s.Current.Temp > 120.0 {
+			s.Current.Temp = 120.0
+		}
+		s.Current.Error = true
+	} else {
+		targetTemp := 20.0 + (s.Current.Speed * 0.8)
+		s.Current.Temp += (targetTemp-s.Current.Temp)*0.1 + (rand.Float64() - 0.5)
+	}
+
+	if s.IsLeakingAir {
+		s.Current.Pressure -= 0.05 + (rand.Float64() * 0.05)
+		if s.Current.Pressure < 0 {
+			s.Current.Pressure = 0
+		}
+		s.Current.Error = true
+	} else {
+		s.Current.Pressure = 4.0 + (rand.Float64() * 0.5)
+	}
+
+	s.Current.Voltage = 74.0 + (rand.Float64() * 2.0)
+
+	chance := rand.Float64()
+
+	if chance < 0.005 && !s.IsOverheating {
+		s.IsOverheating = true
+	} else if chance >= 0.005 && chance < 0.010 && !s.IsLeakingFuel {
+		s.IsLeakingFuel = true
+	} else if chance >= 0.010 && chance < 0.015 && !s.IsLeakingAir {
+		s.IsLeakingAir = true
+	}
+
+	switch {
+	case chance >= 0.015 && chance < 0.020:
+		s.Current.Speed = -45.5
+	case chance >= 0.020 && chance < 0.025:
+		s.Current.Temp = 999.9
+	case chance >= 0.025 && chance < 0.030:
+		s.Current.Pressure = -5.0
+	case chance >= 0.030 && chance < 0.035:
+		s.Current.Voltage = 0.0
+		s.Current.Error = true
+	}
+
+	return s.Current
+}
+
+func (s *State) Fix() {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	s.IsOverheating = false
+	s.IsLeakingFuel = false
+	s.IsLeakingAir = false
+	s.Current.Error = false
+
+	s.Current.Temp = 80.0
+	s.Current.Pressure = 4.0
+	s.Current.Fuel = 5000.0
+}
+>>>>>>> 99abf4e21b6b96acda32af47eaa1148d49b5bff1

@@ -1,6 +1,7 @@
 module processing
 
 go 1.26.1
+<<<<<<< HEAD
 
 require (
 	github.com/jackc/pgpassfile v1.0.0 // indirect
@@ -18,3 +19,5 @@ require (
 	gorm.io/driver/postgres v1.6.0 // indirect
 	gorm.io/gorm v1.31.1 // indirect
 )
+=======
+>>>>>>> 99abf4e21b6b96acda32af47eaa1148d49b5bff1
