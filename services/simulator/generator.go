@@ -2,6 +2,7 @@ package main
 
 import (
 	"math/rand"
+	"sync"
 	"time"
 )
 
@@ -16,6 +17,7 @@ type Telemetry struct {
 }
 
 type State struct {
+	mu            sync.Mutex
 	Current       Telemetry
 	IsOverheating bool
 	IsLeakingFuel bool
@@ -38,16 +40,15 @@ func NewState() *State {
 	}
 }
 
-// ---------------------------------------------------------
-// ГЛОБАЛЬНАЯ ПЕРЕМЕННАЯ (Живет на уровне файла)
-// ---------------------------------------------------------
 var SharedLoco = NewState()
 
 func (s *State) Next() Telemetry {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
 	s.Current.Timestamp = time.Now().UnixMilli()
 	s.Current.Error = false
 
-	// 1. СКОРОСТЬ
 	s.Current.Speed += (rand.Float64() - 0.5) * 5.0
 	if s.Current.Speed < 0 {
 		s.Current.Speed = 0
@@ -56,7 +57,6 @@ func (s *State) Next() Telemetry {
 		s.Current.Speed = 120
 	}
 
-	// 2. ТОПЛИВО
 	if s.IsLeakingFuel {
 		s.Current.Fuel -= 20.0 + (rand.Float64() * 10.0)
 		s.Current.Error = true
@@ -67,7 +67,6 @@ func (s *State) Next() Telemetry {
 		s.Current.Fuel = 0
 	}
 
-	// 3. ТЕМПЕРАТУРА
 	if s.IsOverheating {
 		s.Current.Temp += 1.0 + rand.Float64()
 		if s.Current.Temp > 120.0 {
@@ -79,7 +78,6 @@ func (s *State) Next() Telemetry {
 		s.Current.Temp += (targetTemp-s.Current.Temp)*0.1 + (rand.Float64() - 0.5)
 	}
 
-	// 4. ДАВЛЕНИЕ
 	if s.IsLeakingAir {
 		s.Current.Pressure -= 0.05 + (rand.Float64() * 0.05)
 		if s.Current.Pressure < 0 {
@@ -90,12 +88,8 @@ func (s *State) Next() Telemetry {
 		s.Current.Pressure = 4.0 + (rand.Float64() * 0.5)
 	}
 
-	// 5. ВОЛЬТАЖ
 	s.Current.Voltage = 74.0 + (rand.Float64() * 2.0)
 
-	// ---------------------------------------------------------
-	// 6. ГЕНЕРАТОР ПОЛОМОК И ГЛЮКОВ
-	// ---------------------------------------------------------
 	chance := rand.Float64()
 
 	if chance < 0.005 && !s.IsOverheating {
@@ -121,10 +115,10 @@ func (s *State) Next() Telemetry {
 	return s.Current
 }
 
-// ---------------------------------------------------------
-// МЕТОД ПОЧИНКИ (Вынесен как отдельная функция)
-// ---------------------------------------------------------
 func (s *State) Fix() {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
 	s.IsOverheating = false
 	s.IsLeakingFuel = false
 	s.IsLeakingAir = false

@@ -4,26 +4,20 @@ import(
 	"log"
 	"net/http"
 	"os"
-
-	"github.com/nats-io/nats.go"
+	
 	"github.com/xyn3x/hacknu-ktzh/services/ingestion/internal/pipeline"
 	"github.com/xyn3x/hacknu-ktzh/services/ingestion/internal/ws"
 )
 
 func main() {
-	natsUrl := os.Getenv("NATS_URL")
-	if natsUrl == "" {
-		natsUrl = nats.DefaultURL
-	}
+	brokers := strings.Split(env("REDPANDA_BROKERS", "localhost:9092"), ",")
 
-	nc, err := nats.Connect(natsUrl)
-	if err != nil {
-		log.Fatal("NATS connection failed: ", err)
-	}
-	defer nc.Close()
-	log.Println("NATS connected successfully: ", natsUrl)
+	port := env("INGESTION_PORT", "8081")
 
-	forward := pipeline.NewForwarder(nc)
+	forward := pipeline.NewForwarder(brokers)
+	defer forward.Close()
+	log.Println("Conntected to Redpanda: ", brokers)
+	
 	server := ws.NewServer(forward)
 
 	http.Handle("/ws", server)
@@ -31,10 +25,13 @@ func main() {
 		w.Write([]byte("ok"))
 	})
 
-	port := os.Getenv("INGESTION_PORT")
-	if port == "" {
-		port = "8081"
-	}
 	log.Println("Listening on: " + port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
+}
+
+func env(key, fallback string) string {
+	if v := os.Getenv(key); v != "" {
+		return v
+	}
+	return fallback
 }
