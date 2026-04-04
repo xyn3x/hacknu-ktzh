@@ -10,41 +10,40 @@ import (
 
 // streamToIngestion работает в фоне, подключается к Ingestion и шлет данные
 func streamToIngestion(ingestionURL string) {
-	var conn *websocket.Conn
-	var err error
-
-	// 1. Цикл переподключения (если Ingestion еще не запустился)
+	// Бесконечный цикл всей работы
 	for {
-		log.Printf("🔄 Попытка подключения к Ingestion: %s...", ingestionURL)
-		conn, _, err = websocket.DefaultDialer.Dial(ingestionURL, nil)
-		if err != nil {
+		var conn *websocket.Conn
+		var err error
+
+		// 1. Цикл переподключения
+		for {
+			log.Printf("🔄 Попытка подключения к Ingestion: %s...", ingestionURL)
+			conn, _, err = websocket.DefaultDialer.Dial(ingestionURL, nil)
+			if err == nil {
+				break // Подключились!
+			}
 			log.Println("⚠️ Ingestion пока недоступен. Ждем 2 секунды...")
 			time.Sleep(2 * time.Second)
-			continue
 		}
-		break // Успешно подключились!
-	}
-	defer conn.Close()
-	log.Println("✅ Соединение с Ingestion установлено! Начинаем трансляцию...")
 
-	// 2. Таймер на отправку (2 раза в секунду = 500ms)
-	ticker := time.NewTicker(500 * time.Millisecond)
-	defer ticker.Stop()
+		log.Println("✅ Соединение с Ingestion установлено!")
 
-	// 3. Бесконечный цикл отправки данных
-	for range ticker.C {
-		// Берем свежие данные из локомотива!
-		data := SharedLoco.Next()
+		// 2. Таймер на отправку
+		ticker := time.NewTicker(500 * time.Millisecond)
 
-		err = conn.WriteJSON(data)
-		if err != nil {
-			log.Println("❌ Ошибка отправки данных (обрыв связи):", err)
-			// Выходим из функции при обрыве. Контейнер перезапустится.
-			return
+		// 3. Цикл отправки
+		for range ticker.C {
+			data := SharedLoco.Next()
+			err = conn.WriteJSON(data)
+			if err != nil {
+				log.Println("❌ Обрыв связи! Начинаем переподключение...")
+				ticker.Stop()
+				conn.Close()
+				break // Выходим из цикла отправки, возвращаемся к циклу переподключения
+			}
 		}
 	}
 }
-
 func main() {
 	// 1. ЗАПУСКАЕМ КЛИЕНТА В ФОНЕ
 	// ВАЖНО: Замени "8081" на порт, который укажет тиммейт в Ingestion!
@@ -53,12 +52,20 @@ func main() {
 
 	// 2. МАРШРУТ ДЛЯ ПОЧИНКИ (Трогать нельзя, фронтенд ждет его тут)
 	http.HandleFunc("/fix", func(w http.ResponseWriter, r *http.Request) {
-		SharedLoco.Fix()
-
-		// Разрешаем фронтенду делать запросы (CORS)
+		// 1. Сначала ставим заголовки
 		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 
+		// 2. Если это проверка от браузера (Preflight) - отдаем OK и уходим
+		if r.Method == http.MethodOptions {
+			w.WriteHeader(http.StatusOK)
+			return
+		}
+
+		// 3. А тут уже твоя логика
+		SharedLoco.Fix()
+		w.Header().Set("Content-Type", "application/json")
 		w.Write([]byte(`{"status": "success", "message": "Train is repaired!"}`))
 		log.Println("🛠 Кнопка ПОЧИНИТЬ нажата! Поезд восстановлен.")
 	})

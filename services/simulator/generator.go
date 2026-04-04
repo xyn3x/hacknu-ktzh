@@ -2,6 +2,7 @@ package main
 
 import (
 	"math/rand"
+	"sync"
 	"time"
 )
 
@@ -16,6 +17,7 @@ type Telemetry struct {
 }
 
 type State struct {
+	mu            sync.Mutex
 	Current       Telemetry
 	IsOverheating bool
 	IsLeakingFuel bool
@@ -38,12 +40,12 @@ func NewState() *State {
 	}
 }
 
-// ---------------------------------------------------------
-// ГЛОБАЛЬНАЯ ПЕРЕМЕННАЯ (Живет на уровне файла)
-// ---------------------------------------------------------
 var SharedLoco = NewState()
 
 func (s *State) Next() Telemetry {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
 	s.Current.Timestamp = time.Now().UnixMilli()
 	s.Current.Error = false
 
@@ -125,6 +127,9 @@ func (s *State) Next() Telemetry {
 // МЕТОД ПОЧИНКИ (Вынесен как отдельная функция)
 // ---------------------------------------------------------
 func (s *State) Fix() {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
 	s.IsOverheating = false
 	s.IsLeakingFuel = false
 	s.IsLeakingAir = false
