@@ -18,8 +18,8 @@ func main() {
 		log.Println("Train is repaired.")
 	})
 
-	log.Println("🚀 Симулятор запущен! Ожидание подключений на ws://localhost:8080/ws")
-	log.Println("💡 Для починки отправьте GET-запрос на http://localhost:8080/fix")
+	log.Println("🚀 Симулятор запущен!")
+	log.Println("💡 HTTP сервер (для кнопки) слушает на http://localhost:8080/fix")
 
 	err := http.ListenAndServe(":8081", nil)
 	if err != nil {
