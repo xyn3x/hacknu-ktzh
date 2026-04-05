@@ -74,5 +74,33 @@ services:
       timescaledb:
         condition: service_started
 
+  # ── API Gateway ────────────────────────────────────────────────────────────
+  api-gateway:
+    build: ./services/api-gateaway
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: 8080
+      REDPANDA_BROKERS: redpanda:29092
+      POSTGRES_DSN: postgres://postgres:postgres@timescaledb:5432/telemetry?sslmode=disable
+    depends_on:
+      redpanda:
+        condition: service_healthy
+      timescaledb:
+        condition: service_started
+      processing:
+        condition: service_started
+
+  # ── Frontend ───────────────────────────────────────────────────────────────
+  frontend:
+    build: ./services/frontend
+    ports:
+      - "3000:3000"
+    environment:
+      # Points Next.js rewrites to the gateway inside the Docker network
+      NEXT_PUBLIC_API_GATEWAY_URL: http://api-gateway:8080
+    depends_on:
+      - api-gateway
+
 volumes:
   pg_data:
