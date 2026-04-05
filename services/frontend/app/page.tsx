@@ -73,41 +73,44 @@ const TIME_RANGE_MAP: Record<TimeRange, HistoryRange> = {
  * Derive simple component health percentages from a raw telemetry frame.
  * These mirror the thresholds used in the Go processing service.
  */
+/**
+ * Считаем здоровье на основе нашей точной математической модели из health.go
+ */
 function deriveComponentHealth(f: TelemetryFrame) {
   const clamp = (v: number) => Math.round(Math.max(0, Math.min(100, v)))
 
-  // engine: temp 60-90 nominal, 130+ critical
-  const engineScore =
-    f.temp <= 90  ? 100
-    : f.temp >= 130 ? 0
-    : 100 * (130 - f.temp) / 40
+  // Точные копии функций из health.go
+  const scoreDescending = (val: number, nom: number, crit: number) =>
+    val <= nom ? 100 : val >= crit ? 0 : 100 * (crit - val) / (crit - nom);
 
-  // brakes: pressure 8+ nominal, 5- critical
-  const brakesScore =
-    f.pressure >= 8 ? 100
-    : f.pressure <= 5 ? 0
-    : 100 * (f.pressure - 5) / 3
+  const scoreAscending = (val: number, min: number, nom: number) =>
+    val >= nom ? 100 : val <= min ? 0 : 100 * (val - min) / (nom - min);
 
-  // electrical: voltage 1500+ nominal, 1200- critical
-  const elecScore =
-    f.voltage >= 1500 ? 100
-    : f.voltage <= 1200 ? 0
-    : 100 * (f.voltage - 1200) / 300
+  const scoreTwoSided = (val: number, minC: number, nom: number, maxC: number) => {
+    if (val <= minC || val >= maxC) return 0;
+    if (val < nom) return 100 * (val - minC) / (nom - minC);
+    return 100 * (maxC - val) / (maxC - nom);
+  };
 
-  // fuel / cooling / hydraulics / compressor – approximate from fuel %
-  const fuelScore =
-    f.fuel >= 20 ? 100
-    : f.fuel <= 0 ? 0
-    : 100 * f.fuel / 20
+  // Считаем баллы по вашим порогам!
+  const tempScore = scoreDescending(f.temp, 90, 105);
+  const pressureScore = scoreTwoSided(f.pressure, 2, 5, 8);
+  const voltageScore = scoreTwoSided(f.voltage, 40, 75, 150);
+  const fuelScore = scoreAscending(f.fuel, 500, 1000);
+  const speedScore = scoreDescending(f.speed, 100, 180);
+
+  // Тот самый Индекс Здоровья (health.go)
+  const realHealth = 0.35 * tempScore + 0.30 * pressureScore + 0.20 * voltageScore + 0.05 * fuelScore + 0.10 * speedScore;
 
   return {
-    engine:     clamp(engineScore),
-    brakes:     clamp(brakesScore),
-    electrical: clamp(elecScore),
-    wheels:     clamp(f.health),          // global health proxy
-    hydraulics: clamp(f.health * 0.9),
-    cooling:    clamp(engineScore * 0.85),
-    compressor: clamp(brakesScore * 0.9),
+    globalHealth: clamp(realHealth), // <-- Сохраняем общую оценку сюда
+    engine:     clamp(tempScore),
+    brakes:     clamp(pressureScore),
+    electrical: clamp(voltageScore),
+    wheels:     clamp(speedScore),
+    hydraulics: clamp(pressureScore * 0.9),
+    cooling:    clamp(tempScore * 0.85),
+    compressor: clamp(pressureScore * 0.9),
   }
 }
 
@@ -229,15 +232,27 @@ function CabinDashboardContent() {
   const MAX_CHART_PTS = 300
   useEffect(() => {
     if (telemetry.timestamp === 0) return
-    const point = (value: number): ChartDataPoint => ({
-      time: new Date(telemetry.timestamp).toLocaleTimeString([], {
-        hour: "2-digit", minute: "2-digit", second: "2-digit",
-      }),
-      value,
-      timestamp: telemetry.timestamp,
-    })
-    const push = (arr: ChartDataPoint[], pt: ChartDataPoint) =>
-      [...arr, pt].slice(-MAX_CHART_PTS)
+
+    // Добавляем параметр isPrecise: если true - оставляем 1 знак, если false - до целого
+  const point = (value: number, isPrecise: boolean = false): ChartDataPoint => ({
+    time: new Date(telemetry.timestamp).toLocaleTimeString([], {
+      hour: "2-digit", minute: "2-digit", second: "2-digit",
+    }),
+    // Округляем и обязательно переводим обратно в число через Number()
+    value: isPrecise ? Number(value.toFixed(1)) : Math.round(value),
+    timestamp: telemetry.timestamp,
+  })
+
+  const push = (arr: ChartDataPoint[], pt: ChartDataPoint) =>
+    [...arr, pt].slice(-MAX_CHART_PTS)
+
+  setChartData((prev) => ({
+    speed:       push(prev.speed,       point(telemetry.speed)),
+    temperature: push(prev.temperature, point(telemetry.temp)),
+    pressure:    push(prev.pressure,    point(telemetry.pressure, true)), // true - оставляем 1 знак для давления
+    fuel:        push(prev.fuel,        point(telemetry.fuel)),
+    voltage:     push(prev.voltage,     point(telemetry.voltage, true)),  // true - оставляем 1 знак для напряжения
+  }))
 
     setChartData((prev) => ({
       speed:       push(prev.speed,       point(telemetry.speed)),
@@ -265,38 +280,61 @@ function CabinDashboardContent() {
 
   // ── Alerts ──────────────────────────────────────────────────────────────────
   const [alerts, setAlerts] = useState<Alert[]>([])
+  
+  // ДОБАВЛЕНО: Хранилище для "проигнорированных" (закрытых) уведомлений
+  const [ignoredAlertTitles, setIgnoredAlertTitles] = useState<Set<string>>(new Set())
 
   // Convert backend alert strings to UI alerts on each live frame
   useEffect(() => {
     if (!telemetry.alerts?.length) return
     const newAlerts = parseAlerts(telemetry.alerts, t)
+    
     setAlerts((prev) => {
-      // Deduplicate by title – keep existing + add truly new ones
       const existing = new Set(prev.map((a) => a.title))
-      const added = newAlerts.filter((a) => !existing.has(a.title))
+      // ДОБАВЛЕНО: Фильтруем алерты — пропускаем только те, которых нет на экране И нет в игнор-листе
+      const added = newAlerts.filter((a) => !existing.has(a.title) && !ignoredAlertTitles.has(a.title))
       return added.length ? [...prev, ...added].slice(-20) : prev
     })
-  }, [telemetry.alerts, t])
+  }, [telemetry.alerts, ignoredAlertTitles, t])
 
   const handleDismissAlert = useCallback((id: string) => {
-    setAlerts((prev) => prev.filter((a) => a.id !== id))
+    setAlerts((prev) => {
+      // ДОБАВЛЕНО: Перед удалением запоминаем заголовок алерта, чтобы больше его не показывать
+      const alertToDismiss = prev.find(a => a.id === id)
+      if (alertToDismiss) {
+        setIgnoredAlertTitles(ignored => new Set(ignored).add(alertToDismiss.title))
+      }
+      return prev.filter((a) => a.id !== id)
+    })
   }, [])
 
   const handleFixAll = useCallback(() => {
-    // Clear all alerts - simulates fixing all issues
-    setAlerts([])
-  }, [])
+    setAlerts((prev) => {
+      // ДОБАВЛЕНО: При нажатии "Fix All" закидываем ВСЕ текущие алерты в игнор-лист
+      const newIgnored = new Set(ignoredAlertTitles)
+      prev.forEach(a => newIgnored.add(a.title))
+      setIgnoredAlertTitles(newIgnored)
+      return [] // Очищаем экран
+    })
+  }, [ignoredAlertTitles])
 
   // ── Highload test ───────────────────────────────────────────────────────────
   const [highloadActive, setHighloadActive] = useState(false)
   const highloadRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  const startHighload = useCallback(() => {
+ const startHighload = useCallback(() => {
     if (highloadRef.current) return
     setHighloadActive(true)
     highloadRef.current = setInterval(() => {
-      // Fire 10 concurrent fetchLatest requests (x10 highload) — fire-and-forget, no await
-      for (let i = 0; i < 10; i++) fetchLatest()
+      // Делаем 10 запросов и КАЖДЫЙ из них заставляем обновить UI
+      for (let i = 0; i < 10; i++) {
+        fetchLatest().then((f) => {
+          if (f) {
+            setTelemetry(f);     // Сохраняем данные, чтобы UI дернулся!
+            setConnected(true);
+          }
+        })
+      }
     }, 50)
   }, [])
 
@@ -316,19 +354,17 @@ function CabinDashboardContent() {
   }, [])
 
   // ── Reset all telemetry data ────────────────────────────────────────────────
-  const handleResetTelemetry = useCallback(() => {
-    // Stop highload if running
+ const handleResetTelemetry = useCallback(() => {
     if (highloadRef.current) {
       clearInterval(highloadRef.current)
       highloadRef.current = null
       setHighloadActive(false)
     }
-    // Clear all data
     setTelemetry(EMPTY_TELEMETRY)
     setChartData({ speed: [], temperature: [], pressure: [], fuel: [], voltage: [] })
     setAlerts([])
+    setIgnoredAlertTitles(new Set()) // <--- Добавь эту строку сюда!
     setConnected(false)
-    // Bump resetKey to tear down and restart WS + poll
     setResetKey((k) => k + 1)
   }, [])
 
@@ -396,9 +432,8 @@ function CabinDashboardContent() {
   const pressureDisplay   = telemetry.pressure.toFixed(1)
   const fuelDisplay       = Math.round(telemetry.fuel)
   const voltageKv         = Math.round(telemetry.voltage)
-  const healthDisplay     = Math.round(telemetry.health)
-  // Efficiency = health with small bias from error flag
-  const efficiencyDisplay = Math.round(telemetry.health * (telemetry.error ? 0.85 : 0.95))
+  const healthDisplay     = componentHealth.globalHealth
+  const efficiencyDisplay = Math.round(componentHealth.globalHealth * (telemetry.error ? 0.85 : 0.95))
 
   // ── Render ──────────────────────────────────────────────────────────────────
   return (
