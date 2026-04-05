@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { AlertTriangle, AlertCircle, Info, Bell, X } from "lucide-react"
+import { AlertTriangle, AlertCircle, Info, Bell, X, Wrench } from "lucide-react"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Button } from "@/components/ui/button"
 
 export type AlertSeverity = "critical" | "warning" | "info"
 
@@ -18,10 +19,11 @@ export interface Alert {
 interface AlertsPanelProps {
   alerts: Alert[]
   onDismiss?: (id: string) => void
+  onFixAll?: () => void
   delay?: number
 }
 
-export function AlertsPanel({ alerts, onDismiss, delay = 0 }: AlertsPanelProps) {
+export function AlertsPanel({ alerts, onDismiss, onFixAll, delay = 0 }: AlertsPanelProps) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -34,18 +36,20 @@ export function AlertsPanel({ alerts, onDismiss, delay = 0 }: AlertsPanelProps) 
       case "critical":
         return {
           icon: AlertCircle,
-          bgColor: "bg-pastel-red/10",
-          borderColor: "border-pastel-red/30",
-          iconColor: "text-pastel-red",
-          dotColor: "bg-pastel-red",
+          bgColor: "bg-red-500/20",
+          borderColor: "border-red-500/50",
+          iconColor: "text-red-500",
+          dotColor: "bg-red-500",
+          pulseColor: "animate-pulse",
         }
       case "warning":
         return {
           icon: AlertTriangle,
-          bgColor: "bg-pastel-yellow/10",
-          borderColor: "border-pastel-yellow/30",
-          iconColor: "text-pastel-yellow",
-          dotColor: "bg-pastel-yellow",
+          bgColor: "bg-amber-500/20",
+          borderColor: "border-amber-500/50",
+          iconColor: "text-amber-500",
+          dotColor: "bg-amber-500",
+          pulseColor: "",
         }
       case "info":
       default:
@@ -55,6 +59,7 @@ export function AlertsPanel({ alerts, onDismiss, delay = 0 }: AlertsPanelProps) 
           borderColor: "border-primary/30",
           iconColor: "text-primary",
           dotColor: "bg-primary",
+          pulseColor: "",
         }
     }
   }
@@ -80,11 +85,22 @@ export function AlertsPanel({ alerts, onDismiss, delay = 0 }: AlertsPanelProps) 
           <Bell className="w-4 h-4 text-muted-foreground" />
           <h3 className="text-sm font-medium text-foreground">Alerts</h3>
           {alerts.length > 0 && (
-            <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-pastel-red/20 text-pastel-red">
+            <span className="px-2 py-0.5 text-xs font-medium rounded-full bg-red-500/30 text-red-500 animate-pulse">
               {alerts.length}
             </span>
           )}
         </div>
+        {alerts.length > 0 && onFixAll && (
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={onFixAll}
+            className="h-7 px-3 text-xs gap-1.5 border-pastel-green/50 text-pastel-green hover:bg-pastel-green/10 hover:text-pastel-green"
+          >
+            <Wrench className="w-3 h-3" />
+            Fix All
+          </Button>
+        )}
       </div>
 
       {/* Alerts List */}
@@ -109,7 +125,7 @@ export function AlertsPanel({ alerts, onDismiss, delay = 0 }: AlertsPanelProps) 
                 return (
                   <div
                     key={alert.id}
-                    className={`relative p-3 rounded-xl ${config.bgColor} border ${config.borderColor} group transition-all duration-200 hover:scale-[1.01]`}
+                    className={`relative p-3 rounded-xl ${config.bgColor} border-2 ${config.borderColor} group transition-all duration-200 hover:scale-[1.01] ${config.pulseColor}`}
                   >
                     <div className="flex items-start gap-3">
                       {/* Severity indicator */}

@@ -11,6 +11,7 @@ import { AlertsPanel, type Alert } from "@/components/alerts-panel"
 import { RouteSchematic } from "@/components/route-schematic"
 import { ReorderableMetricCards } from "@/components/reorderable-metric-cards"
 import { ThemeToggleSimple } from "@/components/theme-toggle"
+import { ReportExportButton } from "@/components/report-export-button"
 import { LanguageProvider, useLanguage } from "@/lib/i18n"
 import { Button } from "@/components/ui/button"
 import {
@@ -277,6 +278,11 @@ function CabinDashboardContent() {
     setAlerts((prev) => prev.filter((a) => a.id !== id))
   }, [])
 
+  const handleFixAll = useCallback(() => {
+    // Clear all alerts - simulates fixing all issues
+    setAlerts([])
+  }, [])
+
   // ── Static / route data ─────────────────────────────────────────────────────
   const stations = useMemo(() => [
     { id: "1", name: "Астана",     position: 0,   type: "origin"       as const, arrivalTime: "08:00", status: "passed" as const },
@@ -400,6 +406,7 @@ function CabinDashboardContent() {
               >
                 <RotateCcw className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
               </Button>
+              <ReportExportButton />
               <ThemeToggleSimple />
             </div>
           </div>
@@ -580,12 +587,11 @@ function CabinDashboardContent() {
 
             {/* Right – Metrics Panel */}
             <div className="lg:col-span-4">
-              {/* Circular progress */}
+              {/* Health Index - Centered */}
               <div className="bg-glass backdrop-blur-xl border border-glass-border rounded-2xl p-4 lg:p-6 shadow-lg mb-4 lg:mb-6">
-                <h3 className="text-sm font-medium text-foreground mb-4">{t.systemEfficiency}</h3>
-                <div className="flex justify-around">
-                  <CircularProgress value={healthDisplay}     label={t.health}     delay={200} />
-                  <CircularProgress value={efficiencyDisplay} label={t.efficiency} delay={300} />
+                <h3 className="text-sm font-medium text-foreground mb-4 text-center">{t.health}</h3>
+                <div className="flex justify-center">
+                  <CircularProgress value={healthDisplay} label={t.health} size={140} strokeWidth={10} delay={200} />
                 </div>
               </div>
 
@@ -611,7 +617,7 @@ function CabinDashboardContent() {
                       <MetricCard
                         label={t.fuelLevel}
                         value={String(fuelDisplay)}
-                        unit="L"
+                        unit={t.percent}
                         progress={fuelDisplay}
                         icon={<Fuel className="w-4 h-4" />}
                         delay={450}
@@ -663,6 +669,7 @@ function CabinDashboardContent() {
                       <AlertsPanel
                         alerts={alerts}
                         onDismiss={handleDismissAlert}
+                        onFixAll={handleFixAll}
                         delay={700}
                       />
                     ),

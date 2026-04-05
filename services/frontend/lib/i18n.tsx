@@ -47,6 +47,7 @@ interface Translations {
   alerts: string
   noActiveAlerts: string
   allSystemsNormal: string
+  fixAll: string
   engineTempRising: string
   engineTempRisingMessage: string
   scheduledMaintenance: string
@@ -167,6 +168,7 @@ const translations: Record<Language, Translations> = {
     alerts: "Оповещения",
     noActiveAlerts: "Нет активных оповещений",
     allSystemsNormal: "Все системы работают нормально",
+    fixAll: "Исправить всё",
     engineTempRising: "Температура двигателя растёт",
     engineTempRisingMessage: "Температура приближается к верхнему порогу. Рекомендуется снизить нагрузку.",
     scheduledMaintenance: "Плановое обслуживание",
@@ -285,6 +287,7 @@ const translations: Record<Language, Translations> = {
     alerts: "Ескертулер",
     noActiveAlerts: "Белсенді ескертулер жоқ",
     allSystemsNormal: "Барлық жүйелер қалыпты жұмыс істеуде",
+    fixAll: "Барлығын түзету",
     engineTempRising: "Қозғалтқыш температурасы көтеріліп жатыр",
     engineTempRisingMessage: "Температура жоғарғы шекке жақындауда. Жүктемені азайтуды қарастырыңыз.",
     scheduledMaintenance: "Жоспарлы техникалық қызмет",
