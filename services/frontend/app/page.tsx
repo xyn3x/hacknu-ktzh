@@ -611,7 +611,7 @@ function CabinDashboardContent() {
                       <MetricCard
                         label={t.fuelLevel}
                         value={String(fuelDisplay)}
-                        unit={t.percent}
+                        unit="L"
                         progress={fuelDisplay}
                         icon={<Fuel className="w-4 h-4" />}
                         delay={450}

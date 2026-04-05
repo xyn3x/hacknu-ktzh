@@ -1,0 +1,298 @@
+{"timestamp":"00:00:00.861","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:06.286","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:09.148","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:09.152","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:09.162","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353344708&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:09.164","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:11.830","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353344708&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:11.832","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:11.836","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353344708&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:11.838","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:14.516","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353344708&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:14.519","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:14.524","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353344708&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:14.528","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:17.211","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:17.213","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:17.215","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:19.892","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:19.894","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:19.898","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:19.900","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:22.578","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:22.580","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:22.585","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:22.587","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:25.271","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:25.272","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:25.275","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:27.980","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:27.982","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:27.985","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:27.987","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:30.667","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:30.669","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:30.672","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:30.675","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:33.367","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:33.369","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:33.373","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:36.037","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:36.039","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:36.042","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:36.044","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:38.740","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:38.746","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:38.748","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:41.432","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:41.434","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:41.439","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:41.440","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:44.125","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:44.127","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:44.128","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:46.812","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:46.813","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:47.135","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:47.136","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:49.486","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:49.831","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:49.832","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:54.862","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:55.841","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:55.844","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:57.544","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:57.546","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:59.147","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:00:59.149","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:00.217","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:01.834","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:01.835","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:03.140","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:03.142","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:04.911","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:05.820","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:05.822","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:07.591","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:07.593","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:09.129","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:09.130","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:09.899","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:01:10.279","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:12.968","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:12.969","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:14.481","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:15.649","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353408276&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:15.651","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:17.160","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353408276&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:17.162","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:18.326","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353408276&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:18.327","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:19.834","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353408276&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:19.836","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:21.014","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353408276&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:21.017","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:22.517","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:22.519","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:23.683","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:23.685","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:25.216","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:26.371","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:26.372","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:27.904","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:27.905","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:29.075","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:29.077","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:30.592","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:30.593","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:31.775","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:31.776","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:33.279","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:33.280","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:34.459","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:35.973","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:35.974","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:37.152","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:37.154","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:38.653","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:38.655","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:39.858","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:39.859","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:41.351","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:41.352","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:42.534","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:44.049","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:44.050","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:45.224","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:45.225","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:46.738","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:46.739","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:47.904","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:47.905","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:49.416","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:50.589","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:50.590","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:52.093","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:52.094","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:53.565","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:53.567","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:54.759","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:56.236","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:56.237","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:57.570","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:57.570","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:59.584","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:01:59.585","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:00.246","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:02.267","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:02.269","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:03.562","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:03.563","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:05.576","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:05.576","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:06.244","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:08.263","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:08.264","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:09.583","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:09.584","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:11.569","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:11.570","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:12.255","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:14.264","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:14.266","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:15.584","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:15.586","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:17.591","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:17.593","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:18.269","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:20.274","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:20.276","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:21.589","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:21.592","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:23.573","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:23.574","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:24.262","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:26.264","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:26.265","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:27.569","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:27.570","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:29.584","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:29.585","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:30.248","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:32.282","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:32.285","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:33.590","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:33.591","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:35.589","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:35.590","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:36.265","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:38.266","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:38.267","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:39.584","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:39.585","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:41.590","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:41.593","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:42.261","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:44.271","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:44.272","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:45.592","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:45.593","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:47.583","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:47.585","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:48.274","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:50.265","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:50.266","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:51.570","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:51.571","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:53.589","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:53.590","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:54.258","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:56.259","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:56.259","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:57.583","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:57.584","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:59.576","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:02:59.579","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:00.267","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:02.266","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:02.266","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:03.582","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:03.583","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:05.572","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:05.573","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:06.287","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:08.257","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:08.257","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:09.572","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:09.573","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:11.578","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:11.579","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:12.258","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:14.282","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:14.282","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:15.570","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:15.571","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:17.570","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:17.570","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:18.263","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:20.259","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:20.261","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:24.340","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:26.579","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:26.579","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:28.451","source":"Server","level":"LOG","message":"✓ Compiled in 79ms"}
+{"timestamp":"00:03:30.417","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:33.934","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:03:36.752","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:36.753","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:37.544","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353552331&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:37.546","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:39.426","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353552331&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:39.428","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:40.218","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353552331&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:40.219","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:42.106","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353552331&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:42.107","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:42.890","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/history?from=1775353552331&limit=500&downsample=false Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:42.892","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:44.799","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:45.577","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:45.579","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:47.468","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:47.469","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:48.274","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:48.275","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:50.167","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:50.168","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:50.945","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:50.946","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:52.865","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:52.868","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:53.633","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:55.569","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:55.571","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:56.341","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:56.342","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:58.259","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:58.260","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:59.020","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:03:59.022","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:00.945","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:01.711","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:01.714","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:03.639","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:03.641","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:04.411","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:04.412","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:06.327","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:06.329","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:07.100","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:09.028","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:09.030","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:09.787","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:09.788","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:11.728","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:11.729","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:12.688","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/ws Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:14.405","source":"Server","level":"ERROR","message":"Failed to proxy http://api-gateway:8080/api/telemetry/latest Error: getaddrinfo ENOTFOUND api-gateway"}
+{"timestamp":"00:04:14.405","source":"Server","level":"ERROR","message":"Error: getaddrinfo ENOTFOUND api-gateway"}
