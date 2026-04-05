@@ -157,11 +157,11 @@ const translations: Record<Language, Translations> = {
 
     // System Efficiency
     systemEfficiency: "Эффективность системы",
-    health: "Состояние",
+    health: "Индекс здоровья",
     efficiency: "Эффективность",
 
     // Metric Cards
-    currentSpeed: "Текущая скорость",
+    currentSpeed: "Скорость",
     systemVoltage: "Напряжение системы",
 
     // Alerts
@@ -177,7 +177,7 @@ const translations: Record<Language, Translations> = {
     brakes: "Тормоза",
 
     // Charts
-    speedOverTime: "Скорость во времени",
+    speedOverTime: "Скорость",
     engineTemperature: "Температура двигателя",
     systemVoltageChart: "Напряжение системы",
     live: "Live",
