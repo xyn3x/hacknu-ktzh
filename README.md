@@ -6,7 +6,7 @@
 
 # 🚆 Digital Twin Locomotive Dashboard
 
-## 📌 Introduction
+## 📌 Introduction <a id="introduction"></a>
 **Digital Twin Locomotive Dashboard** — это full-stack веб-приложение для визуализации телеметрии локомотива в реальном времени и оценки его состояния через интегральный индекс здоровья.
 
 Проект решает проблему перегрузки данными: вместо сотен параметров пользователь получает понятную, структурированную и приоритизированную картину состояния системы.
@@ -14,19 +14,18 @@
 ---
 
 ## 📚 Table of Contents
-- [Introduction](#-introduction)
-- [Installation](#-installation)
-- [Features](#-features)
-- [UI Usage Guide](#-ui-usage-guide)
-- [Health Index](#-health-index)
-- [Architecture](#-architecture)
-- [Tech Stack](#-tech-stack)
-- [Data Pipeline](#-data-pipeline)
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Features](#features)
+- [UI Usage Guide](#ui-usage-guide)
+- [Health Index](#health-index)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Data Pipeline](#data-pipeline)
 
 ---
----
 
-## ⚙️ Installation
+## ⚙️ Installation <a id="installation"></a>
 
 ### 🐳 Docker
 
@@ -36,11 +35,10 @@ cd project
 docker-compose up --build
 ```
 
----
 
 ---
 
-## 🚀 Features
+## 🚀 Features <a id="features"></a>
 
 - 📊 Визуализация телеметрии:
   - скорость
@@ -63,7 +61,7 @@ docker-compose up --build
 
 ---
 
-## 🖥️ UI Usage Guide
+## 🖥️ UI Usage Guide <a id="ui-usage-guide"></a>
 
 ### A. Workspace Setup
 - Темная / светлая тема
@@ -83,7 +81,7 @@ docker-compose up --build
 
 ---
 
-## ❤️ Health Index
+## ❤️ Health Index <a id="health-index"></a>
 
 Интегральный показатель состояния локомотива.
 
@@ -102,12 +100,12 @@ docker-compose up --build
 - Электрические параметры  
 - Ошибки и алерты  
 
-## 🏗️ Architecture
+## 🏗️ Architecture <a id="architecture"></a>
 
 Микросервисная архитектура обеспечивает масштабируемость и отказоустойчивость:
 
 
-### Components
+### Components <a id="introduction"></a>
 - **Frontend** — UI и визуализация
 - **API Gateway** — объединяет все сервисы в единую точку входа и управляет запросами
 - **Generator** — генерирует поток телеметрии, имитируя реальные условия: добавляет шумы, случайные отклонения и изменения параметров во времени
@@ -118,7 +116,7 @@ docker-compose up --build
 
 ---
 
-## 🧰 Tech Stack
+## 🧰 Tech Stack <a id="tech-stack"></a>
 
 ### Backend
 - Go (Fiber / Gin) — используется для высоконагруженных сервисов, где критична производительность и работа с параллельными задачами
@@ -128,7 +126,7 @@ docker-compose up --build
 - Kafka / Redpanda — используются для передачи потоковой телеметрии между сервисами, обеспечивая устойчивость и асинхронную обработку данных
 - WebSocket — обеспечивает передачу данных на фронтенд в реальном времени без задержек и лишних запросов
 
-### Databases
+### Databases 
 - PostgreSQL — основное надежное хранилище данных
 - TimescaleDB — оптимизирована под временные ряды и используется для хранения телеметрии
 
@@ -142,8 +140,8 @@ docker-compose up --build
 
 ---
 
-## 🔄 Data Pipeline
-
+## 🔄 Data Pipeline <a id="data-pipeline"></a>
+ 
 Система реализует полный цикл обработки потоковой телеметрии — от сырого сигнала до готовой аналитики.
 
 ### 📥 Ingestion
