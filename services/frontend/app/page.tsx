@@ -32,6 +32,9 @@ import {
   RotateCcw,
   Maximize2,
   Minimize2,
+  FlaskConical,
+  Square,
+  Trash2,
 } from "lucide-react"
 
 // ── constants ─────────────────────────────────────────────────────────────────
@@ -176,6 +179,7 @@ function CabinDashboardContent() {
   // ── Live telemetry ──────────────────────────────────────────────────────────
   const [telemetry, setTelemetry] = useState<TelemetryFrame>(EMPTY_TELEMETRY)
   const [connected, setConnected] = useState(false)
+  const [resetKey, setResetKey] = useState(0)
 
   // Live feed via WebSocket + fallback REST poll
   useEffect(() => {
@@ -202,7 +206,7 @@ function CabinDashboardContent() {
       unsubscribe()
       clearInterval(pollInterval)
     }
-  }, [])
+  }, [resetKey])
 
   // Derive component health from live frame
   const componentHealth = useMemo(
@@ -283,6 +287,51 @@ function CabinDashboardContent() {
     setAlerts([])
   }, [])
 
+  // ── Highload test ───────────────────────────────────────────────────────────
+  const [highloadActive, setHighloadActive] = useState(false)
+  const highloadRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const startHighload = useCallback(() => {
+    if (highloadRef.current) return
+    setHighloadActive(true)
+    highloadRef.current = setInterval(() => {
+      // Fire 10 concurrent fetchLatest requests (x10 highload) — fire-and-forget, no await
+      for (let i = 0; i < 10; i++) fetchLatest()
+    }, 50)
+  }, [])
+
+  const stopHighload = useCallback(() => {
+    if (highloadRef.current) {
+      clearInterval(highloadRef.current)
+      highloadRef.current = null
+    }
+    setHighloadActive(false)
+  }, [])
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (highloadRef.current) clearInterval(highloadRef.current)
+    }
+  }, [])
+
+  // ── Reset all telemetry data ────────────────────────────────────────────────
+  const handleResetTelemetry = useCallback(() => {
+    // Stop highload if running
+    if (highloadRef.current) {
+      clearInterval(highloadRef.current)
+      highloadRef.current = null
+      setHighloadActive(false)
+    }
+    // Clear all data
+    setTelemetry(EMPTY_TELEMETRY)
+    setChartData({ speed: [], temperature: [], pressure: [], fuel: [], voltage: [] })
+    setAlerts([])
+    setConnected(false)
+    // Bump resetKey to tear down and restart WS + poll
+    setResetKey((k) => k + 1)
+  }, [])
+
   // ── Static / route data ─────────────────────────────────────────────────────
   const stations = useMemo(() => [
     { id: "1", name: "Астана",     position: 0,   type: "origin"       as const, arrivalTime: "08:00", status: "passed" as const },
@@ -346,7 +395,7 @@ function CabinDashboardContent() {
   const tempDisplay       = Math.round(telemetry.temp)
   const pressureDisplay   = telemetry.pressure.toFixed(1)
   const fuelDisplay       = Math.round(telemetry.fuel)
-  const voltageKv         = (telemetry.voltage / 1000).toFixed(1)
+  const voltageKv         = Math.round(telemetry.voltage)
   const healthDisplay     = Math.round(telemetry.health)
   // Efficiency = health with small bias from error flag
   const efficiencyDisplay = Math.round(telemetry.health * (telemetry.error ? 0.85 : 0.95))
@@ -406,6 +455,53 @@ function CabinDashboardContent() {
               >
                 <RotateCcw className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
               </Button>
+
+              {/* Highload test box */}
+              <div className="flex items-center gap-1 px-1.5 py-1 rounded-lg border border-orange-500/40 bg-orange-500/5">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={`h-7 px-2 text-[10px] lg:text-xs font-medium gap-1.5 ${
+                    highloadActive
+                      ? "text-orange-400 bg-orange-500/10"
+                      : "text-muted-foreground hover:text-orange-400 hover:bg-orange-500/10"
+                  }`}
+                  onClick={startHighload}
+                  disabled={highloadActive}
+                  title="Highload test: 10x запросов каждые 50мс"
+                >
+                  <FlaskConical className="w-3 h-3 lg:w-3.5 lg:h-3.5" />
+                  <span className="hidden sm:inline">x10</span>
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={`h-7 px-2 text-[10px] lg:text-xs font-medium gap-1.5 ${
+                    !highloadActive
+                      ? "text-muted-foreground/40 cursor-not-allowed"
+                      : "text-red-400 hover:bg-red-500/10"
+                  }`}
+                  onClick={stopHighload}
+                  disabled={!highloadActive}
+                  title="Остановить highload тест"
+                >
+                  <Square className="w-3 h-3 lg:w-3.5 lg:h-3.5" />
+                  <span className="hidden sm:inline">Стоп</span>
+                </Button>
+              </div>
+
+              {/* Reset all telemetry */}
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-7 lg:h-8 px-2 lg:px-3 text-[10px] lg:text-xs font-medium gap-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                onClick={handleResetTelemetry}
+                title="Сбросить все телеметрические данные"
+              >
+                <Trash2 className="w-3 h-3 lg:w-3.5 lg:h-3.5" />
+                <span className="hidden md:inline">Сброс</span>
+              </Button>
+
               <ReportExportButton />
               <ThemeToggleSimple />
             </div>
@@ -506,7 +602,7 @@ function CabinDashboardContent() {
                         <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1">{t.voltage}</p>
                         <div className="flex items-baseline gap-1">
                           <span className="text-2xl font-semibold text-foreground tabular-nums">{voltageKv}</span>
-                          <span className="text-xs text-muted-foreground">{t.kv}</span>
+                          <span className="text-xs text-muted-foreground">В</span>
                         </div>
                       </div>
                     </DraggableWidget>
@@ -643,7 +739,7 @@ function CabinDashboardContent() {
                       <MetricCard
                         label={t.systemVoltage}
                         value={voltageKv}
-                        unit={t.kv}
+                        unit="В"
                         progress={componentHealth.electrical}
                         icon={<Zap className="w-4 h-4" />}
                         delay={550}
