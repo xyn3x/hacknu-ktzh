@@ -15,14 +15,13 @@
 
 ## 📚 Table of Contents
 - [Introduction](#-introduction)
-- [Examples](#-examples)
 - [Installation](#-installation)
 - [Features](#-features)
+- [UI Usage Guide](#-ui-usage-guide)
+- [Health Index](#-health-index)
 - [Architecture](#-architecture)
 - [Tech Stack](#-tech-stack)
 - [Data Pipeline](#-data-pipeline)
-- [Health Index](#-health-index)
-- [UI Usage Guide](#-ui-usage-guide)
 
 ---
 ---
