@@ -13,7 +13,7 @@ func Validate(t *model.Telemetry) error {
 	if t.Speed < 0 || t.Speed > 250 {
 		return fmt.Errorf("speed out of range: %.1f", t.Speed)
 	}
-	if t.Temp < -60 || t.Temp > 150 {
+	if t.Temp < 60 || t.Temp > 150 {
 		return fmt.Errorf("temp out of range: %.1f", t.Temp)
 	}
 	if t.Pressure < 0 || t.Pressure > 12 {

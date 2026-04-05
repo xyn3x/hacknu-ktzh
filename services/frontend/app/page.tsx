@@ -114,18 +114,68 @@ function deriveComponentHealth(f: TelemetryFrame) {
   }
 }
 
+
+// Генератор рекомендаций на основе текста ошибки
+function getRecommendation(msg: string): string {
+  const text = msg.toLowerCase();
+  
+  if (text.includes("температура") && text.includes("critical")) {
+    return "Снизить тягу, включить принудительное охлаждение, проверить уровень ОЖ.";
+  }
+  if (text.includes("температура")) {
+    return "Уменьшить нагрузку на двигатель, следить за динамикой нагрева.";
+  }
+  if (text.includes("давление превышает")) {
+    return "Немедленно проверить компрессор и сбросить избыточное давление.";
+  }
+  if (text.includes("давление") && text.includes("critical")) {
+    return "Применить экстренное торможение, проверить тормозную магистраль на утечки.";
+  }
+  if (text.includes("давление тормозов")) {
+    return "Проверить плотность тормозной магистрали, подготовиться к остановке.";
+  }
+  if (text.includes("уровень топлива") && text.includes("critical")) {
+    return "Запланировать экстренную дозаправку. Снизить потребление (переход в эко-режим).";
+  }
+  if (text.includes("уровень топлива")) {
+    return "Проложить маршрут к ближайшей станции экипировки.";
+  }
+  if (text.includes("скачок напряжения")) {
+    return "Отключить вспомогательные цепи, проверить регулятор напряжения.";
+  }
+  if (text.includes("напряжение") && text.includes("critical")) {
+    return "Проверить работу генератора и состояние аккумуляторных батарей.";
+  }
+  if (text.includes("напряжение")) {
+    return "Снизить электрическую нагрузку, отключить второстепенные системы.";
+  }
+  if (text.includes("скорость")) {
+    return "Плавно применить рабочее торможение для снижения скорости до нормы.";
+  }
+  if (text.includes("аппаратной")) {
+    return "Провести глубокую диагностику бортовых систем при ближайшей остановке.";
+  }
+
+  return "Требуется проверка системы машинистом.";
+}
+
 /** Parse backend alert strings into UI Alert objects */
 let alertIdCounter = 100
 function parseAlerts(raw: string[], t: any): Alert[] {
   return raw.map((msg) => {
+    // Определяем цвет/тип
     const severity = msg.startsWith("CRITICAL") ? "critical"
       : msg.startsWith("WARNING") ? "warning"
       : "info"
+      
+    // Очищаем заголовок от "CRITICAL: " для красоты в UI
+    const cleanTitle = msg.replace(/^(CRITICAL|WARNING|ERROR):\s*/, "");
+
     return {
       id: String(++alertIdCounter),
       severity,
-      title: msg,
-      message: "",
+      title: cleanTitle, 
+      message: getRecommendation(msg), // <--- ВОТ ТУТ МАГИЯ, вставляем рекомендацию!
       timestamp: new Date(),
       component: t.engine,
     }
@@ -748,7 +798,7 @@ function CabinDashboardContent() {
                       <MetricCard
                         label={t.fuelLevel}
                         value={String(fuelDisplay)}
-                        unit={t.percent}
+                        unit="Л"
                         progress={fuelDisplay}
                         icon={<Fuel className="w-4 h-4" />}
                         delay={450}
